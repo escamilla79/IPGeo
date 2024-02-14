@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>IP Geolocation</title>
+</head>
+<body>
+	<h2> IP Geo</h2>
+	
+		<form action="/ipgeos" method="post">
+	 	<input type="text" ip="ip" placeholder="Ip"/>
+	 	<input type="text" ip="city" placeholder="City"/>
+	 	<input type="text" ip="Country" placeholder="Country"/>
+	    <input type="submit" value="Add"/>
+	</form>
+	
+	<table>
+		<tr th:each="ipgeo : ${ipgeos}"	>
+		    <td th:text="${ipgeo.ip"}></td>
+		    <td th:text="$ïpgeo.city}"></td>
+		    <td th:text="${ipgeo.country}"></td>
+		    <td th:text="${ipgeo.loc}"></td>
+		    <td>
+		    	<form th:action="@{ipgeos/delete/{ip}(ip=${ipgeo.ip}))}" method="post">
+		    		<input type="submit" value="Delete"/>
+		    	</form>
+		    </td>
+		    	
+	</table>
+	
+
+</body>
+</html>
